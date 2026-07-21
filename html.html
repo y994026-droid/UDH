@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>UDH - تعلم HTML</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0d0d0d;
+            color: white;
+        }
+
+        header {
+            background: linear-gradient(135deg, #d40000, #700000);
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 38px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        nav {
+            background: #181818;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .lesson {
+            background: #1b1b1b;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            border: 1px solid #333;
+        }
+
+        .lesson h2 {
+            color: #ff3333;
+        }
+
+        .lesson p {
+            color: #ddd;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        pre {
+            background: #050505;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
+            border: 1px solid #333;
+        }
+
+        code {
+            color: #00ff99;
+            font-size: 16px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #d40000;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+
+        .button:hover {
+            background: #ff2222;
+        }
+
+        footer {
+            background: #d40000;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌐 تعلم HTML</h1>
+    <p>ابدأ رحلتك في إنشاء صفحات المواقع 🚀</p>
+</header>
+
+<nav>
+    <a href="index.html">🏠 الرئيسية</a>
+    <a href="html.html">HTML</a>
+    <a href="css.html">CSS</a>
+    <a href="javascript.html">JavaScript</a>
+    <a href="python.html">Python</a>
+</nav>
+
+<div class="container">
+
+    <div class="lesson">
+        <h2>📚 الدرس الأول: ما هي HTML؟</h2>
+
+        <p>
+            HTML هي اللغة التي نستخدمها لإنشاء
+            هيكل صفحات المواقع.
+        </p>
+
+        <p>
+            باستخدام HTML يمكنك إضافة العناوين
+            والفقرات والصور والروابط وغيرها.
+        </p>
+    </div>
+
+    <div class="lesson">
+        <h2>📝 الدرس الثاني: إنشاء أول صفحة</h2>
+
+        <p>
+            هذا مثال بسيط لأول صفحة HTML:
+        </p>
+
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+    &lt;title&gt;موقعي الأول&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;مرحبًا بك في موقعي&lt;/h1&gt;
+
+    &lt;p&gt;أنا أتعلم HTML مع UDH&lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+    </div>
+
+    <div class="lesson">
+        <h2>🏷️ الدرس الثالث: العناوين</h2>
+
+        <p>
+            في HTML يوجد 6 مستويات للعناوين
+            من h1 إلى h6.
+        </p>
+
+        <pre><code>&lt;h1&gt;عنوان كبير&lt;/h1&gt;
+
+&lt;h2&gt;عنوان متوسط&lt;/h2&gt;
+
+&lt;h3&gt;عنوان أصغر&lt;/h3&gt;</code></pre>
+    </div>
+
+    <div class="lesson">
+        <h2>✍️ الدرس الرابع: الفقرات</h2>
+
+        <p>
+            نستخدم الوسم p لكتابة الفقرات.
+        </p>
+
+        <pre><code>&lt;p&gt;
+هذا أول نص في موقعي.
+&lt;/p&gt;</code></pre>
+    </div>
+
+    <div class="lesson">
+        <h2>🔗 الدرس الخامس: الروابط</h2>
+
+        <p>
+            يمكنك إنشاء رابط باستخدام الوسم a.
+        </p>
+
+        <pre><code>&lt;a href="https://example.com"&gt;
+اضغط هنا
+&lt;/a&gt;</code></pre>
+    </div>
+
+    <div class="lesson">
+        <h2>🎯 تحدي صغير</h2>
+
+        <p>
+            حاول إنشاء صفحة تحتوي على:
+        </p>
+
+        <p>
+            1️⃣ عنوان باسمك<br>
+            2️⃣ فقرة تعرف فيها نفسك<br>
+            3️⃣ رابط لموقع تحبه
+        </p>
+
+        <p>
+            🚀 حاول تنفيذ التحدي بنفسك!
+        </p>
+    </div>
+
+    <a href="index.html" class="button">
+        ⬅️ العودة إلى الرئيسية
+    </a>
+
+</div>
+
+<footer>
+    <p>© 2026 UDH - تعلم البرمجة 🚀</p>
+</footer>
+
+</body>
+  </html>
