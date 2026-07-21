@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>UDH - تعلم البرمجة</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: white;
+        }
+
+        header {
+            background: #d40000;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 35px;
+        }
+
+        nav {
+            background: #222;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+            font-size: 17px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(#220000, #111);
+        }
+
+        .hero h2 {
+            font-size: 32px;
+            color: #ff3333;
+        }
+
+        .hero p {
+            font-size: 19px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #d40000;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            margin-top: 15px;
+            font-size: 18px;
+        }
+
+        .section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .section h2 {
+            color: #ff3333;
+            font-size: 28px;
+        }
+
+        .courses {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .course {
+            background: #222;
+            width: 260px;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #444;
+        }
+
+        .course h3 {
+            font-size: 24px;
+        }
+
+        .course p {
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        .course button {
+            background: #d40000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .games {
+            background: #1a1a1a;
+        }
+
+        footer {
+            background: #d40000;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 28px;
+            }
+
+            .hero h2 {
+                font-size: 25px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 7px;
+            }
+
+            .course {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>💻 UDH</h1>
+        <p>منصة تعليم البرمجة للجميع</p>
+    </header>
+
+    <nav>
+        <a href="#home">الرئيسية</a>
+        <a href="#courses">الدروس</a>
+        <a href="#games">الألعاب</a>
+        <a href="#about">من نحن</a>
+    </nav>
+
+    <section class="hero" id="home">
+        <h2>مرحبًا بك في UDH 🚀</h2>
+
+        <p>
+            تعلم البرمجة بطريقة سهلة وممتعة
+            وابدأ رحلتك في عالم التكنولوجيا.
+        </p>
+
+        <a href="#courses" class="button">
+            ابدأ التعلم الآن
+        </a>
+    </section>
+
+    <section class="section" id="courses">
+
+        <h2>📚 تعلم البرمجة</h2>
+
+        <div class="courses">
+
+            <div class="course">
+                <h3>🌐 HTML</h3>
+                <p>
+                    تعلم كيف تصنع صفحات المواقع
+                    من البداية.
+                </p>
+                <button>ابدأ الدرس</button>
+            </div>
+
+            <div class="course">
+                <h3>🎨 CSS</h3>
+                <p>
+                    تعلم كيف تجعل موقعك
+                    جميلًا واحترافيًا.
+                </p>
+                <button>ابدأ الدرس</button>
+            </div>
+
+            <div class="course">
+                <h3>⚡ JavaScript</h3>
+                <p>
+                    تعلم كيف تجعل المواقع
+                    تفاعلية وممتعة.
+                </p>
+                <button>ابدأ الدرس</button>
+            </div>
+
+            <div class="course">
+                <h3>🐍 Python</h3>
+                <p>
+                    تعلم لغة Python
+                    من الصفر حتى الاحتراف.
+                </p>
+                <button>ابدأ الدرس</button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section games" id="games">
+
+        <h2>🎮 ألعاب وتحديات البرمجة</h2>
+
+        <p>
+            قريبًا ستجد هنا ألعابًا وتحديات
+            تساعدك على تعلم البرمجة بطريقة ممتعة.
+        </p>
+
+        <a href="#" class="button">
+            قريبًا 🚀
+        </a>
+
+    </section>
+
+    <section class="section" id="about">
+
+        <h2>💡 عن UDH</h2>
+
+        <p>
+            UDH هو موقع يهدف إلى مساعدة
+            المبتدئين والأطفال على تعلم البرمجة
+            بطريقة سهلة وممتعة.
+        </p>
+
+    </section>
+
+    <footer>
+        <p>© 2026 UDH - جميع الحقوق محفوظة</p>
+    </footer>
+
+</body>
+</html>
