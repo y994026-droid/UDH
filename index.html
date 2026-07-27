@@ -1,23 +1,44 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>UDH - تعلم البرمجة</title><style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>UDH - منصة تعلم البرمجة</title>
+
+<style>
 * {
     box-sizing: border-box;
+}
+
+html {
     scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #111;
+    background: #0d0d0d;
     color: white;
 }
 
-/* ===== القائمة ===== */
+header {
+    background: linear-gradient(135deg, #d40000, #650000);
+    padding: 35px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 45px;
+}
+
+header p {
+    font-size: 19px;
+}
 
 nav {
-    background: #222;
+    background: #1b1b1b;
     padding: 15px;
     text-align: center;
     position: sticky;
@@ -25,40 +46,32 @@ nav {
     z-index: 1000;
 }
 
-nav a {
+nav button {
+    background: transparent;
+    border: none;
     color: white;
-    text-decoration: none;
-    margin: 7px;
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
     font-size: 16px;
 }
 
-nav a:hover {
+nav button:hover {
     color: #ff3333;
 }
 
-/* ===== الهيدر ===== */
-
-header {
-    background: linear-gradient(135deg, #d40000, #700000);
-    padding: 30px;
-    text-align: center;
+.page {
+    display: none;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 40px;
+.page.active {
+    display: block;
 }
-
-header p {
-    font-size: 18px;
-}
-
-/* ===== الرئيسية ===== */
 
 .hero {
     text-align: center;
     padding: 70px 20px;
-    background: linear-gradient(#220000, #111);
+    background: linear-gradient(#250000, #0d0d0d);
 }
 
 .hero h2 {
@@ -71,25 +84,21 @@ header p {
     line-height: 1.8;
 }
 
-/* ===== الأزرار ===== */
-
 .button {
     display: inline-block;
     background: #d40000;
     color: white;
-    padding: 13px 28px;
+    padding: 13px 25px;
+    margin: 8px;
     border-radius: 10px;
-    text-decoration: none;
-    margin-top: 15px;
-    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 .button:hover {
-    background: #ff3333;
-    transform: scale(1.05);
+    background: #ff2222;
 }
-
-/* ===== الأقسام ===== */
 
 .section {
     padding: 50px 20px;
@@ -101,8 +110,6 @@ header p {
     font-size: 30px;
 }
 
-/* ===== الكورسات ===== */
-
 .courses {
     display: flex;
     flex-wrap: wrap;
@@ -111,20 +118,20 @@ header p {
 }
 
 .course {
-    background: #222;
-    width: 260px;
+    background: #1b1b1b;
+    width: 280px;
     padding: 25px;
     border-radius: 15px;
-    border: 1px solid #444;
-    transition: 0.3s;
+    border: 1px solid #333;
 }
 
 .course:hover {
+    border-color: #d40000;
     transform: translateY(-5px);
 }
 
 .course h3 {
-    font-size: 24px;
+    font-size: 25px;
 }
 
 .course p {
@@ -132,84 +139,115 @@ header p {
     line-height: 1.7;
 }
 
-/* ===== الدروس ===== */
-
-.lessons {
-    max-width: 900px;
-    margin: auto;
-    padding: 40px 20px;
-}
-
 .lesson {
+    max-width: 850px;
+    margin: 25px auto;
     background: #1b1b1b;
     padding: 30px;
-    margin-bottom: 25px;
     border-radius: 15px;
+    text-align: right;
     border: 1px solid #333;
 }
 
-.lesson h3 {
-    color: #3399ff;
-    font-size: 24px;
+.lesson h2 {
+    color: #ff3333;
 }
 
 .lesson p {
     color: #ddd;
     font-size: 18px;
-    line-height: 1.8;
+    line-height: 1.9;
 }
 
-/* ===== الأكواد ===== */
-
 pre {
+    direction: ltr;
+    text-align: left;
     background: #050505;
+    color: #00ff99;
     padding: 20px;
     border-radius: 10px;
     overflow-x: auto;
-    direction: ltr;
-    text-align: left;
+}
+
+.progress-box,
+.quiz,
+.challenge,
+.editor,
+.premium,
+.about-box {
+    max-width: 800px;
+    margin: 30px auto;
+    background: #1b1b1b;
+    padding: 30px;
+    border-radius: 15px;
     border: 1px solid #333;
 }
 
-code {
+.progress {
+    background: #333;
+    height: 22px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: #d40000;
+    width: 0%;
+    height: 100%;
+    transition: 0.5s;
+}
+
+.quiz {
+    text-align: right;
+}
+
+.quiz label {
+    display: block;
+    background: #292929;
+    padding: 13px;
+    margin: 10px 0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.quiz label:hover {
+    background: #333;
+}
+
+textarea {
+    width: 100%;
+    height: 220px;
+    background: #050505;
     color: #00ff99;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #444;
+    direction: ltr;
+    text-align: left;
     font-size: 16px;
 }
 
-/* ===== عناوين اللغات ===== */
+iframe {
+    width: 100%;
+    height: 250px;
+    background: white;
+    border: none;
+    border-radius: 10px;
+    margin-top: 15px;
+}
 
-.language-title {
-    padding: 40px 20px;
+.premium {
+    background: linear-gradient(135deg, #300000, #160000);
+    border: 2px solid #d40000;
     text-align: center;
 }
 
-.html-title {
-    background: linear-gradient(135deg, #ff6600, #993300);
+.price {
+    font-size: 40px;
+    color: #ff3333;
+    font-weight: bold;
+    margin: 20px;
 }
-
-.css-title {
-    background: linear-gradient(135deg, #0066ff, #003080);
-}
-
-.js-title {
-    background: linear-gradient(135deg, #d4a000, #705500);
-}
-
-.python-title {
-    background: linear-gradient(135deg, #006b80, #003c4a);
-}
-
-.language-title h2 {
-    font-size: 35px;
-}
-
-/* ===== الألعاب ===== */
-
-.games {
-    background: #1a1a1a;
-}
-
-/* ===== الفوتر ===== */
 
 footer {
     background: #d40000;
@@ -217,275 +255,948 @@ footer {
     text-align: center;
 }
 
-/* ===== الموبايل ===== */
+.message {
+    font-size: 18px;
+    margin: 15px;
+}
 
-@media (max-width: 600px) {
+.success {
+    color: #00ff99;
+}
+
+.error {
+    color: #ff5555;
+}
+
+.search-box {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    font-size: 17px;
+}
+
+@media(max-width:600px) {
 
     header h1 {
-        font-size: 30px;
+        font-size: 32px;
     }
 
     .hero h2 {
         font-size: 27px;
     }
 
-    nav a {
-        display: inline-block;
-        margin: 5px;
-    }
-
     .course {
-        width: 90%;
+        width: 95%;
     }
 
-    .lesson {
-        padding: 20px;
+    nav button {
+        font-size: 14px;
     }
 
 }
+</style>
+</head>
 
-</style></head><body id="home"><!-- ========================= --><!-- ===== القائمة ===== --><!-- ========================= --><nav><a href="#home">🏠 الرئيسية</a>
+<body>
 
-<a href="#courses">📚 الدروس</a>
+<header>
 
-<a href="#html">🌐 HTML</a>
+<h1>💻 UDH</h1>
 
-<a href="#css">🎨 CSS</a>
+<p>
+منصة عربية لتعلم البرمجة بسهولة ومتعة 🚀
+</p>
 
-<a href="#javascript">⚡ JavaScript</a>
+</header>
 
-<a href="#python">🐍 Python</a>
 
-<a href="#games">🎮 الألعاب</a>
+<nav>
 
-</nav><!-- ========================= --><!-- ===== الهيدر ===== --><!-- ========================= --><header><h1>💻 UDH</h1><p>
-منصة تعليم البرمجة للجميع 🚀
-</p></header><!-- ========================= --><!-- ===== الرئيسية ===== --><!-- ========================= --><section class="hero"><h2>
+<button onclick="showPage('home')">
+🏠 الرئيسية
+</button>
+
+<button onclick="showPage('courses')">
+📚 الدروس
+</button>
+
+<button onclick="showPage('quiz')">
+📝 الاختبارات
+</button>
+
+<button onclick="showPage('challenge')">
+🎮 التحديات
+</button>
+
+<button onclick="showPage('editor')">
+💻 محرر الأكواد
+</button>
+
+<button onclick="showPage('progress')">
+📊 تقدمي
+</button>
+
+<button onclick="showPage('premium')">
+⭐ Premium
+</button>
+
+<button onclick="showPage('about')">
+💡 من نحن
+</button>
+
+</nav>
+
+
+<!-- الرئيسية -->
+
+<div id="home" class="page active">
+
+<section class="hero">
+
+<h2>
 مرحبًا بك في UDH 🚀
-</h2><p>
-تعلم البرمجة بطريقة سهلة وممتعة
-وابدأ رحلتك في عالم التكنولوجيا.
-</p><a href="#courses" class="button">
-ابدأ التعلم الآن
-</a></section><!-- ========================= --><!-- ===== الكورسات ===== --><!-- ========================= --><section class="section" id="courses"><h2>📚 تعلم البرمجة</h2><div class="courses"><div class="course"><h3>🌐 HTML</h3><p>
-تعلم أساسيات إنشاء صفحات الويب.
-</p><a href="#html" class="button">
-ابدأ
-</a></div><div class="course"><h3>🎨 CSS</h3><p>
-تعلم تصميم وتنسيق المواقع.
-</p><a href="#css" class="button">
-ابدأ
-</a></div><div class="course"><h3>⚡ JavaScript</h3><p>
-تعلم إضافة التفاعل إلى المواقع.
-</p><a href="#javascript" class="button">
-ابدأ
-</a></div><div class="course"><h3>🐍 Python</h3><p>
-تعلم لغة Python من الصفر.
-</p><a href="#python" class="button">
-ابدأ
-</a></div></div></section><!-- ================================================= --><!-- ================= HTML ========================== --><!-- ================================================= --><section id="html"><div class="language-title html-title"><h2>🌐 تعلم HTML</h2><p>
-تعلم إنشاء صفحات المواقع من الصفر.
-</p></div><div class="lessons"><div class="lesson"><h3>📚 الدرس 1: ما هي HTML؟</h3><p>
-HTML هي اللغة التي نستخدمها لإنشاء هيكل صفحات الويب.
-</p><pre><code>&lt;h1&gt;مرحبًا بك في UDH&lt;/h1&gt;
+</h2>
 
-&lt;p&gt;أنا أتعلم HTML&lt;/p&gt;</code></pre></div><div class="lesson"><h3>📝 الدرس 2: العناوين</h3><p>
+<p>
+تعلم HTML وCSS وJavaScript وPython
+من البداية بطريقة سهلة وممتعة.
+</p>
+
+<button class="button" onclick="showPage('courses')">
+ابدأ التعلم الآن
+</button>
+
+</section>
+
+</div>
+
+
+<!-- الدروس -->
+
+<div id="courses" class="page">
+
+<section class="section">
+
+<h2>
+📚 الدروس والكورسات
+</h2>
+
+<div class="search-box">
+
+<input
+type="text"
+id="search"
+placeholder="🔍 ابحث عن درس..."
+onkeyup="searchLessons()"
+>
+
+</div>
+
+
+<div class="courses">
+
+
+<div class="course lesson-card">
+
+<h3>🌐 HTML</h3>
+
+<p>
+تعلم أساسيات إنشاء صفحات المواقع.
+</p>
+
+<button class="button"
+onclick="showPage('html')">
+ابدأ التعلم
+</button>
+
+</div>
+
+
+<div class="course lesson-card">
+
+<h3>🎨 CSS</h3>
+
+<p>
+تعلم تصميم وتنسيق المواقع.
+</p>
+
+<button class="button"
+onclick="showPage('css')">
+ابدأ التعلم
+</button>
+
+</div>
+
+
+<div class="course lesson-card">
+
+<h3>⚡ JavaScript</h3>
+
+<p>
+تعلم البرمجة التفاعلية للمواقع.
+</p>
+
+<button class="button"
+onclick="showPage('javascript')">
+ابدأ التعلم
+</button>
+
+</div>
+
+
+<div class="course lesson-card">
+
+<h3>🐍 Python</h3>
+
+<p>
+تعلم Python من الصفر.
+</p>
+
+<button class="button"
+onclick="showPage('python')">
+ابدأ التعلم
+</button>
+
+</div>
+
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- HTML -->
+
+<div id="html" class="page">
+
+<section class="section">
+
+<h2>🌐 دورة HTML</h2>
+
+
+<div class="lesson">
+
+<h2>الدرس 1: ما هي HTML؟</h2>
+
+<p>
+HTML هي اللغة المستخدمة لبناء هيكل صفحات الويب.
+</p>
+
+<pre>
+&lt;h1&gt;مرحبًا بك في UDH&lt;/h1&gt;
+
+&lt;p&gt;أنا أتعلم HTML&lt;/p&gt;
+</pre>
+
+<button class="button"
+onclick="completeLesson()">
+أنهيت الدرس ✅
+</button>
+
+</div>
+
+
+<div class="lesson">
+
+<h2>الدرس 2: العناوين</h2>
+
+<p>
 نستخدم h1 إلى h6 لإنشاء العناوين.
-</p><pre><code>&lt;h1&gt;عنوان كبير&lt;/h1&gt;
+</p>
+
+<pre>
+&lt;h1&gt;عنوان كبير&lt;/h1&gt;
 
 &lt;h2&gt;عنوان أصغر&lt;/h2&gt;
+</pre>
 
-&lt;h3&gt;عنوان&lt;/h3&gt;</code></pre></div><div class="lesson"><h3>📄 الدرس 3: الفقرات</h3><p>
-نستخدم الوسم p لكتابة النصوص والفقرات.
-</p><pre><code>&lt;p&gt;هذه فقرة في موقعي&lt;/p&gt;</code></pre></div><div class="lesson"><h3>🔗 الدرس 4: الروابط</h3><p>
-نستخدم a لإنشاء الروابط.
-</p><pre><code>&lt;a href="https://example.com"&gt;
+<button class="button"
+onclick="completeLesson()">
+أنهيت الدرس ✅
+</button>
 
-اضغط هنا
+</div>
 
-&lt;/a&gt;</code></pre></div><div class="lesson"><h3>🖼️ الدرس 5: الصور</h3><p>
-نستخدم img لإضافة الصور.
-</p><pre><code>&lt;img src="image.jpg" alt="صورة"&gt;</code></pre></div><div class="lesson"><h3>📋 الدرس 6: القوائم</h3><p>
-يمكنك إنشاء قائمة باستخدام ul و li.
-</p><pre><code>&lt;ul&gt;
 
-&lt;li&gt;HTML&lt;/li&gt;
+<div class="lesson">
 
-&lt;li&gt;CSS&lt;/li&gt;
+<h2>الدرس 3: الفقرات</h2>
 
-&lt;li&gt;JavaScript&lt;/li&gt;
+<p>
+نستخدم الوسم p لكتابة الفقرات.
+</p>
 
-&lt;/ul&gt;</code></pre></div><div class="lesson"><h3>🔘 الدرس 7: الأزرار</h3><pre><code>&lt;button&gt;
+<pre>
+&lt;p&gt;
+هذه فقرة في موقعي
+&lt;/p&gt;
+</pre>
 
-اضغط هنا
+<button class="button"
+onclick="completeLesson()">
+أنهيت الدرس ✅
+</button>
 
-&lt;/button&gt;</code></pre></div><div class="lesson"><h3>📦 الدرس 8: الأقسام</h3><p>
-نستخدم div لتجميع العناصر داخل الصفحة.
-</p><pre><code>&lt;div&gt;
+</div>
 
-&lt;h2&gt;عنوان&lt;/h2&gt;
+</section>
 
-&lt;p&gt;نص&lt;/p&gt;
+</div>
 
-&lt;/div&gt;</code></pre></div><div class="lesson"><h3>📝 الدرس 9: النماذج</h3><pre><code>&lt;form&gt;
 
-&lt;input type="text"&gt;
+<!-- CSS -->
 
-&lt;button&gt;إرسال&lt;/button&gt;
+<div id="css" class="page">
 
-&lt;/form&gt;</code></pre></div><div class="lesson"><h3>🎯 الدرس 10: تحدي HTML</h3><p>
-أنشئ صفحة تحتوي على عنوان وفقرة وصورة ورابط وزر.
-</p><p>
-🚀 حاول تنفيذ التحدي بنفسك!
-</p></div><a href="#home" class="button">
-⬆️ العودة للرئيسية
-</a></div></section><!-- ================================================= --><!-- ================= CSS =========================== --><!-- ================================================= --><section id="css"><div class="language-title css-title"><h2>🎨 تعلم CSS</h2><p>
-تعلم كيف تجعل مواقعك جميلة واحترافية.
-</p></div><div class="lessons"><div class="lesson"><h3>📚 الدرس 1: ما هي CSS؟</h3><p>
+<section class="section">
+
+<h2>🎨 دورة CSS</h2>
+
+
+<div class="lesson">
+
+<h2>الدرس 1: ما هي CSS؟</h2>
+
+<p>
 CSS تستخدم لتنسيق وتصميم صفحات المواقع.
-</p></div><div class="lesson"><h3>🎨 الدرس 2: الألوان</h3><pre><code>h1 {
+</p>
 
-color: red;
-
-}</code></pre></div><div class="lesson"><h3>🔲 الدرس 3: الخلفيات</h3><pre><code>body {
-
-background-color: black;
-
-}</code></pre></div><div class="lesson"><h3>📏 الدرس 4: حجم الخط</h3><pre><code>p {
-
-font-size: 20px;
-
-}</code></pre></div><div class="lesson"><h3>✏️ الدرس 5: نوع الخط</h3><pre><code>body {
-
-font-family: Arial;
-
-}</code></pre></div><div class="lesson"><h3>📦 الدرس 6: الحدود</h3><pre><code>div {
-
-border: 2px solid red;
-
-}</code></pre></div><div class="lesson"><h3>↔️ الدرس 7: المسافات</h3><pre><code>div {
-
-margin: 20px;
-
-padding: 20px;
-
-}</code></pre></div><div class="lesson"><h3>🔘 الدرس 8: الأزرار</h3><pre><code>button {
-
-background: blue;
-
-color: white;
-
-padding: 10px 20px;
-
-border-radius: 10px;
-
-}</code></pre></div><div class="lesson"><h3>📐 الدرس 9: Flexbox</h3><pre><code>.container {
-
-display: flex;
-
-justify-content: center;
-
-}</code></pre></div><div class="lesson"><h3>🧱 الدرس 10: Grid</h3><pre><code>.container {
-
-display: grid;
-
-grid-template-columns: 1fr 1fr;
-
-}</code></pre></div><div class="lesson"><h3>📱 الدرس 11: تصميم الموبايل</h3><pre><code>@media (max-width: 600px) {
-
+<pre>
 body {
+    background: black;
+    color: white;
+}
+</pre>
 
-font-size: 16px;
+<button class="button"
+onclick="completeLesson()">
+أنهيت الدرس ✅
+</button>
+
+</div>
+
+
+<div class="lesson">
+
+<h2>الدرس 2: الألوان</h2>
+
+<pre>
+h1 {
+    color: red;
+}
+</pre>
+
+<button class="button"
+onclick="completeLesson()">
+أنهيت الدرس ✅
+</button>
+
+</div>
+
+
+<div class="lesson">
+
+<h2>الدرس 3: حجم الخط</h2>
+
+<pre>
+p {
+    font-size: 20px;
+}
+</pre>
+
+<button class="button"
+onclick="completeLesson()">
+أنهيت الدرس ✅
+</button>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- JavaScript -->
+
+<div id="javascript" class="page">
+
+<section class="section">
+
+<h2>⚡ دورة JavaScript</h2>
+
+
+<div class="lesson">
+
+<h2>الدرس 1: ما هي JavaScript؟</h2>
+
+<p>
+JavaScript تجعل صفحات المواقع تفاعلية.
+</p>
+
+<pre>
+alert("مرحبًا بك في UDH");
+</pre>
+
+<button class="button"
+onclick="completeLesson()">
+أنهيت الدرس ✅
+</button>
+
+</div>
+
+
+<div class="lesson">
+
+<h2>الدرس 2: المتغيرات</h2>
+
+<pre>
+let name = "UDH";
+
+console.log(name);
+</pre>
+
+<button class="button"
+onclick="completeLesson()">
+أنهيت الدرس ✅
+</button>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- Python -->
+
+<div id="python" class="page">
+
+<section class="section">
+
+<h2>🐍 دورة Python</h2>
+
+
+<div class="lesson">
+
+<h2>الدرس 1: ما هي Python؟</h2>
+
+<p>
+Python لغة برمجة سهلة ومشهورة.
+</p>
+
+<pre>
+print("مرحبًا بك في UDH")
+</pre>
+
+<button class="button"
+onclick="completeLesson()">
+أنهيت الدرس ✅
+</button>
+
+</div>
+
+
+<div class="lesson">
+
+<h2>الدرس 2: المتغيرات</h2>
+
+<pre>
+name = "UDH"
+
+print(name)
+</pre>
+
+<button class="button"
+onclick="completeLesson()">
+أنهيت الدرس ✅
+</button>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- الاختبارات -->
+
+<div id="quiz" class="page">
+
+<section class="section">
+
+<h2>
+📝 اختبار البرمجة
+</h2>
+
+<div class="quiz">
+
+<h3>
+ما اللغة المستخدمة لبناء هيكل صفحة الويب؟
+</h3>
+
+<label>
+<input type="radio"
+name="q1"
+value="wrong">
+CSS
+</label>
+
+<label>
+<input type="radio"
+name="q1"
+value="correct">
+HTML
+</label>
+
+<label>
+<input type="radio"
+name="q1"
+value="wrong">
+Python
+</label>
+
+<button class="button"
+onclick="checkQuiz()">
+تحقق من الإجابة
+</button>
+
+<p id="quizResult"
+class="message">
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- التحديات -->
+
+<div id="challenge" class="page">
+
+<section class="section">
+
+<h2>
+🎮 تحديات البرمجة
+</h2>
+
+<div class="challenge">
+
+<h3>
+🏆 تحدي HTML
+</h3>
+
+<p>
+اكتب عنوانًا باستخدام h1.
+</p>
+
+<pre>
+&lt;h1&gt;اسمك هنا&lt;/h1&gt;
+</pre>
+
+<button class="button"
+onclick="completeChallenge()">
+أنهيت التحدي
+</button>
+
+<p id="challengeResult"
+class="message">
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- محرر الأكواد -->
+
+<div id="editor" class="page">
+
+<section class="section">
+
+<h2>
+💻 محرر أكواد HTML
+</h2>
+
+<p>
+اكتب الكود وشاهد النتيجة مباشرة.
+</p>
+
+<div class="editor">
+
+<textarea id="code">
+<h1>مرحبًا بك في UDH</h1>
+
+<p>أنا أتعلم البرمجة!</p>
+
+<button>اضغط هنا</button>
+</textarea>
+
+<button class="button"
+onclick="runCode()">
+▶️ تشغيل الكود
+</button>
+
+<iframe id="output"></iframe>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- التقدم -->
+
+<div id="progress" class="page">
+
+<section class="section">
+
+<h2>
+📊 تقدمي في التعلم
+</h2>
+
+<div class="progress-box">
+
+<h3>
+تقدمك: <span id="progressText">0%</span>
+</h3>
+
+<div class="progress">
+
+<div id="progressBar"
+class="progress-bar">
+</div>
+
+</div>
+
+<p>
+النقاط: ⭐ <span id="points">0</span>
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- Premium -->
+
+<div id="premium" class="page">
+
+<section class="section">
+
+<h2>
+⭐ UDH Premium
+</h2>
+
+<div class="premium">
+
+<h3>
+احصل على تجربة تعليمية متقدمة 🚀
+</h3>
+
+<div class="price">
+200 جنيه / سنة
+</div>
+
+<p>✅ دروس متقدمة</p>
+
+<p>✅ اختبارات إضافية</p>
+
+<p>✅ تحديات ومشاريع</p>
+
+<p>✅ شهادات إتمام</p>
+
+<p>✅ محتوى جديد باستمرار</p>
+
+<button class="button"
+onclick="subscribe()">
+اشترك الآن
+</button>
+
+<p id="subscribeResult"
+class="message">
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- من نحن -->
+
+<div id="about" class="page">
+
+<section class="section">
+
+<h2>
+💡 عن UDH
+</h2>
+
+<div class="about-box">
+
+<p>
+UDH منصة تعليمية تهدف إلى مساعدة
+المبتدئين على تعلم البرمجة بطريقة
+سهلة وممتعة.
+</p>
+
+<p>
+تعلم 🚀 طبّق 💻 طوّر نفسك 🏆
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+<footer>
+
+<p>
+© 2026 UDH - جميع الحقوق محفوظة
+</p>
+
+</footer>
+
+
+<script>
+
+let points =
+parseInt(localStorage.getItem("udhPoints")) || 0;
+
+let progress =
+parseInt(localStorage.getItem("udhProgress")) || 0;
+
+
+function showPage(pageId) {
+
+document.querySelectorAll(".page")
+.forEach(function(page) {
+
+page.classList.remove("active");
+
+});
+
+let page =
+document.getElementById(pageId);
+
+if(page) {
+
+page.classList.add("active");
+
+window.scrollTo(0,0);
 
 }
 
-}</code></pre></div><div class="lesson"><h3>🎯 الدرس 12: تحدي CSS</h3><p>
-صمم بطاقة تحتوي على عنوان ونص وزر.
-</p></div><a href="#home" class="button">
-⬆️ العودة للرئيسية
-</a></div></section><!-- ================================================= --><!-- ================ JAVASCRIPT ===================== --><!-- ================================================= --><section id="javascript"><div class="language-title js-title"><h2>⚡ تعلم JavaScript</h2><p>
-تعلم كيف تجعل المواقع تفاعلية.
-</p></div><div class="lessons"><div class="lesson"><h3>📚 الدرس 1: ما هي JavaScript؟</h3><p>
-JavaScript تجعل صفحات الويب تفاعلية.
-</p></div><div class="lesson"><h3>📦 الدرس 2: المتغيرات</h3><pre><code>let name = "UDH";
+}
 
-let age = 15;</code></pre></div><div class="lesson"><h3>🔢 الدرس 3: الأرقام</h3><pre><code>let x = 10;
 
-let y = 5;
+function updateProgress() {
 
-let result = x + y;</code></pre></div><div class="lesson"><h3>❓ الدرس 4: الشروط</h3><pre><code>if (age >= 18) {
+document.getElementById("points")
+.innerText = points;
 
-console.log("بالغ");
+document.getElementById("progressText")
+.innerText = progress + "%";
+
+document.getElementById("progressBar")
+.style.width = progress + "%";
+
+localStorage.setItem(
+"udhPoints",
+points
+);
+
+localStorage.setItem(
+"udhProgress",
+progress
+);
+
+}
+
+
+function completeLesson() {
+
+points += 10;
+
+if(progress < 100) {
+
+progress += 5;
+
+}
+
+updateProgress();
+
+alert(
+"🎉 أحسنت! حصلت على 10 نقاط ⭐"
+);
+
+}
+
+
+function checkQuiz() {
+
+let answer =
+document.querySelector(
+'input[name="q1"]:checked'
+);
+
+let result =
+document.getElementById(
+"quizResult"
+);
+
+if(!answer) {
+
+result.innerText =
+"⚠️ اختر إجابة أولًا";
+
+result.className =
+"message error";
+
+return;
+
+}
+
+if(answer.value === "correct") {
+
+points += 20;
+
+progress += 5;
+
+if(progress > 100) {
+
+progress = 100;
+
+}
+
+result.innerText =
+"🎉 إجابة صحيحة! حصلت على 20 نقطة ⭐";
+
+result.className =
+"message success";
+
+updateProgress();
 
 } else {
 
-console.log("صغير");
+result.innerText =
+"❌ إجابة غير صحيحة، حاول مرة أخرى.";
 
-}</code></pre></div><div class="lesson"><h3>🔁 الدرس 5: الحلقات</h3><pre><code>for (let i = 0; i < 5; i++) {
+result.className =
+"message error";
 
-console.log(i);
+}
 
-}</code></pre></div><div class="lesson"><h3>⚙️ الدرس 6: الدوال</h3><pre><code>function hello() {
+}
 
-alert("مرحبًا");
 
-}</code></pre></div><div class="lesson"><h3>🖱️ الدرس 7: الأحداث</h3><pre><code>button.onclick = function() {
+function completeChallenge() {
 
-alert("تم الضغط!");
+points += 30;
 
-};</code></pre></div><div class="lesson"><h3>🌐 الدرس 8: DOM</h3><pre><code>document.getElementById("title");</code></pre></div><div class="lesson"><h3>💬 الدرس 9: التنبيهات</h3><pre><code>alert("مرحبًا بك في UDH");</code></pre></div><div class="lesson"><h3>🎯 الدرس 10: تحدي JavaScript</h3><p>
-أنشئ زرًا عند الضغط عليه يظهر رسالة للمستخدم.
-</p></div><a href="#home" class="button">
-⬆️ العودة للرئيسية
-</a></div></section><!-- ================================================= --><!-- ================= PYTHON ======================== --><!-- ================================================= --><section id="python"><div class="language-title python-title"><h2>🐍 تعلم Python</h2><p>
-تعلم لغة Python من الصفر.
-</p></div><div class="lessons"><div class="lesson"><h3>📚 الدرس 1: ما هي Python؟</h3><p>
-Python لغة برمجة سهلة ومشهورة.
-</p></div><div class="lesson"><h3>📦 الدرس 2: المتغيرات</h3><pre><code>name = "UDH"
+progress += 10;
 
-age = 15</code></pre></div><div class="lesson"><h3>🔢 الدرس 3: الأرقام</h3><pre><code>x = 10
+if(progress > 100) {
 
-y = 5
+progress = 100;
 
-print(x + y)</code></pre></div><div class="lesson"><h3>❓ الدرس 4: الشروط</h3><pre><code>if age >= 18:
+}
 
-    print("بالغ")
+document.getElementById(
+"challengeResult"
+).innerText =
+"🏆 رائع! أكملت التحدي وحصلت على 30 نقطة ⭐";
 
-else:
+document.getElementById(
+"challengeResult"
+).className =
+"message success";
 
-    print("صغير")</code></pre></div><div class="lesson"><h3>🔁 الدرس 5: الحلقات</h3><pre><code>for i in range(5):
+updateProgress();
 
-    print(i)</code></pre></div><div class="lesson"><h3>📋 الدرس 6: القوائم</h3><pre><code>languages = [
+}
 
-"HTML",
 
-"CSS",
+function runCode() {
 
-"Python"
+let code =
+document.getElementById(
+"code"
+).value;
 
-]</code></pre></div><div class="lesson"><h3>⚙️ الدرس 7: الدوال</h3><pre><code>def hello():
+document.getElementById(
+"output"
+).srcdoc =
+code;
 
-    print("مرحبًا")</code></pre></div><div class="lesson"><h3>📚 الدرس 8: القواميس</h3><pre><code>user = {
+}
 
-"name": "UDH",
 
-"age": 15
+function subscribe() {
 
-}</code></pre></div><div class="lesson"><h3>💾 الدرس 9: الملفات</h3><pre><code>file = open("test.txt", "w")
+document.getElementById(
+"subscribeResult"
+).innerText =
+"⭐ نظام الاشتراك والدفع الإلكتروني سيتم تفعيله قريبًا.";
 
-file.write("UDH")
+}
 
-file.close()</code></pre></div><div class="lesson"><h3>🎯 الدرس 10: تحدي Python</h3><p>
-اكتب برنامجًا يطلب اسم المستخدم
-ثم يطبع رسالة ترحيب.
-</p></div><a href="#home" class="button">
-⬆️ العودة للرئيسية
-</a></div></section><!-- ========================= --><!-- ===== الألعاب ===== --><!-- ========================= --><section class="section games" id="games"><h2>🎮 ألعاب وتحديات البرمجة</h2><p>
-قريبًا ستجد هنا ألعابًا وتحديات
-تساعدك على تعلم البرمجة بطريقة ممتعة.
-</p></section><!-- ========================= --><!-- ===== عن UDH ===== --><!-- ========================= --><section class="section"><h2>💡 عن UDH</h2><p>
-UDH منصة تعليمية تساعد المبتدئين
-على تعلم البرمجة بطريقة سهلة وممتعة.
-</p></section><!-- ========================= --><!-- ===== الفوتر ===== --><!-- ========================= --><footer><p>
-© 2026 UDH - جميع الحقوق محفوظة 🚀
-</p></footer></body></html>
+
+function searchLessons() {
+
+let search =
+document.getElementById(
+"search"
+).value.toLowerCase();
+
+let cards =
+document.querySelectorAll(
+".lesson-card"
+);
+
+cards.forEach(function(card) {
+
+let text =
+card.innerText.toLowerCase();
+
+if(text.includes(search)) {
+
+card.style.display =
+"block";
+
+} else {
+
+card.style.display =
+"none";
+
+}
+
+});
+
+}
+
+
+updateProgress();
+
+</script>
+
+</body>
+    </html>
