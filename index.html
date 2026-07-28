@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>UDH - منصة تعلم البرمجة</title>
+<title>UDH - تعلم البرمجة</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -39,7 +41,7 @@ header p {
 
 nav {
     background: #1b1b1b;
-    padding: 15px;
+    padding: 12px;
     text-align: center;
     position: sticky;
     top: 0;
@@ -53,7 +55,7 @@ nav button {
     margin: 5px;
     padding: 10px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 nav button:hover {
@@ -123,15 +125,16 @@ nav button:hover {
     padding: 25px;
     border-radius: 15px;
     border: 1px solid #333;
+    transition: 0.3s;
 }
 
 .course:hover {
-    border-color: #d40000;
     transform: translateY(-5px);
+    border-color: #d40000;
 }
 
 .course h3 {
-    font-size: 25px;
+    font-size: 24px;
 }
 
 .course p {
@@ -145,8 +148,8 @@ nav button:hover {
     background: #1b1b1b;
     padding: 30px;
     border-radius: 15px;
-    text-align: right;
     border: 1px solid #333;
+    text-align: right;
 }
 
 .lesson h2 {
@@ -167,6 +170,20 @@ pre {
     padding: 20px;
     border-radius: 10px;
     overflow-x: auto;
+}
+
+.daily {
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 35px;
+    background: linear-gradient(135deg, #300000, #160000);
+    border: 2px solid #d40000;
+    border-radius: 20px;
+}
+
+.daily h3 {
+    color: #ff4444;
+    font-size: 28px;
 }
 
 .progress-box,
@@ -249,10 +266,17 @@ iframe {
     margin: 20px;
 }
 
-footer {
-    background: #d40000;
-    padding: 25px;
-    text-align: center;
+.search-box {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    font-size: 17px;
 }
 
 .message {
@@ -268,17 +292,10 @@ footer {
     color: #ff5555;
 }
 
-.search-box {
-    max-width: 600px;
-    margin: 20px auto;
-}
-
-.search-box input {
-    width: 100%;
-    padding: 15px;
-    border-radius: 10px;
-    border: none;
-    font-size: 17px;
+footer {
+    background: #d40000;
+    padding: 25px;
+    text-align: center;
 }
 
 @media(max-width:600px) {
@@ -296,14 +313,17 @@ footer {
     }
 
     nav button {
-        font-size: 14px;
+        font-size: 13px;
     }
 
 }
+
 </style>
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -364,13 +384,99 @@ footer {
 </h2>
 
 <p>
-تعلم HTML وCSS وJavaScript وPython
-من البداية بطريقة سهلة وممتعة.
+تعلم البرمجة من الصفر،
+وطور مهاراتك كل يوم.
 </p>
 
-<button class="button" onclick="showPage('courses')">
-ابدأ التعلم الآن
+<button class="button"
+onclick="showPage('daily')">
+
+📅 شاهد درس اليوم
+
 </button>
+
+<button class="button"
+onclick="showPage('courses')">
+
+📚 جميع الدروس
+
+</button>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+📅 درس اليوم
+</h2>
+
+<div class="daily">
+
+<h3 id="dailyTitle">
+جاري تحميل درس اليوم...
+</h3>
+
+<p id="dailyText">
+جاري تحميل محتوى الدرس...
+</p>
+
+<pre id="dailyCode">
+</pre>
+
+<button class="button"
+onclick="completeDailyLesson()">
+
+✅ أنهيت درس اليوم
+
+</button>
+
+<p id="dailyResult"
+class="message">
+
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- درس اليوم -->
+
+<div id="daily" class="page">
+
+<section class="section">
+
+<h2>
+📅 درس اليوم
+</h2>
+
+<div class="daily">
+
+<h3 id="dailyTitle2">
+</h3>
+
+<p id="dailyText2">
+</p>
+
+<pre id="dailyCode2">
+</pre>
+
+<button class="button"
+onclick="completeDailyLesson()">
+
+✅ أنهيت درس اليوم
+
+</button>
+
+<p id="dailyResult2"
+class="message">
+
+</p>
+
+</div>
 
 </section>
 
@@ -384,7 +490,7 @@ footer {
 <section class="section">
 
 <h2>
-📚 الدروس والكورسات
+📚 جميع الدروس
 </h2>
 
 <div class="search-box">
@@ -393,11 +499,9 @@ footer {
 type="text"
 id="search"
 placeholder="🔍 ابحث عن درس..."
-onkeyup="searchLessons()"
->
+onkeyup="searchLessons()">
 
 </div>
-
 
 <div class="courses">
 
@@ -407,12 +511,14 @@ onkeyup="searchLessons()"
 <h3>🌐 HTML</h3>
 
 <p>
-تعلم أساسيات إنشاء صفحات المواقع.
+تعلم بناء صفحات المواقع.
 </p>
 
 <button class="button"
 onclick="showPage('html')">
+
 ابدأ التعلم
+
 </button>
 
 </div>
@@ -423,12 +529,14 @@ onclick="showPage('html')">
 <h3>🎨 CSS</h3>
 
 <p>
-تعلم تصميم وتنسيق المواقع.
+تعلم تصميم المواقع.
 </p>
 
 <button class="button"
 onclick="showPage('css')">
+
 ابدأ التعلم
+
 </button>
 
 </div>
@@ -439,12 +547,14 @@ onclick="showPage('css')">
 <h3>⚡ JavaScript</h3>
 
 <p>
-تعلم البرمجة التفاعلية للمواقع.
+تعلم جعل المواقع تفاعلية.
 </p>
 
 <button class="button"
 onclick="showPage('javascript')">
+
 ابدأ التعلم
+
 </button>
 
 </div>
@@ -460,7 +570,9 @@ onclick="showPage('javascript')">
 
 <button class="button"
 onclick="showPage('python')">
+
 ابدأ التعلم
+
 </button>
 
 </div>
@@ -479,7 +591,7 @@ onclick="showPage('python')">
 
 <section class="section">
 
-<h2>🌐 دورة HTML</h2>
+<h2>🌐 تعلم HTML</h2>
 
 
 <div class="lesson">
@@ -487,7 +599,7 @@ onclick="showPage('python')">
 <h2>الدرس 1: ما هي HTML؟</h2>
 
 <p>
-HTML هي اللغة المستخدمة لبناء هيكل صفحات الويب.
+HTML هي اللغة التي نستخدمها لبناء هيكل صفحات الويب.
 </p>
 
 <pre>
@@ -498,7 +610,9 @@ HTML هي اللغة المستخدمة لبناء هيكل صفحات الوي�
 
 <button class="button"
 onclick="completeLesson()">
+
 أنهيت الدرس ✅
+
 </button>
 
 </div>
@@ -520,7 +634,9 @@ onclick="completeLesson()">
 
 <button class="button"
 onclick="completeLesson()">
+
 أنهيت الدرس ✅
+
 </button>
 
 </div>
@@ -542,7 +658,9 @@ onclick="completeLesson()">
 
 <button class="button"
 onclick="completeLesson()">
+
 أنهيت الدرس ✅
+
 </button>
 
 </div>
@@ -558,7 +676,7 @@ onclick="completeLesson()">
 
 <section class="section">
 
-<h2>🎨 دورة CSS</h2>
+<h2>🎨 تعلم CSS</h2>
 
 
 <div class="lesson">
@@ -566,7 +684,7 @@ onclick="completeLesson()">
 <h2>الدرس 1: ما هي CSS؟</h2>
 
 <p>
-CSS تستخدم لتنسيق وتصميم صفحات المواقع.
+CSS تستخدم لتنسيق وتصميم المواقع.
 </p>
 
 <pre>
@@ -578,7 +696,9 @@ body {
 
 <button class="button"
 onclick="completeLesson()">
+
 أنهيت الدرس ✅
+
 </button>
 
 </div>
@@ -596,25 +716,9 @@ h1 {
 
 <button class="button"
 onclick="completeLesson()">
+
 أنهيت الدرس ✅
-</button>
 
-</div>
-
-
-<div class="lesson">
-
-<h2>الدرس 3: حجم الخط</h2>
-
-<pre>
-p {
-    font-size: 20px;
-}
-</pre>
-
-<button class="button"
-onclick="completeLesson()">
-أنهيت الدرس ✅
 </button>
 
 </div>
@@ -630,7 +734,7 @@ onclick="completeLesson()">
 
 <section class="section">
 
-<h2>⚡ دورة JavaScript</h2>
+<h2>⚡ تعلم JavaScript</h2>
 
 
 <div class="lesson">
@@ -638,7 +742,7 @@ onclick="completeLesson()">
 <h2>الدرس 1: ما هي JavaScript؟</h2>
 
 <p>
-JavaScript تجعل صفحات المواقع تفاعلية.
+JavaScript تجعل صفحات الويب تفاعلية.
 </p>
 
 <pre>
@@ -647,7 +751,9 @@ alert("مرحبًا بك في UDH");
 
 <button class="button"
 onclick="completeLesson()">
+
 أنهيت الدرس ✅
+
 </button>
 
 </div>
@@ -665,7 +771,9 @@ console.log(name);
 
 <button class="button"
 onclick="completeLesson()">
+
 أنهيت الدرس ✅
+
 </button>
 
 </div>
@@ -681,7 +789,7 @@ onclick="completeLesson()">
 
 <section class="section">
 
-<h2>🐍 دورة Python</h2>
+<h2>🐍 تعلم Python</h2>
 
 
 <div class="lesson">
@@ -698,7 +806,9 @@ print("مرحبًا بك في UDH")
 
 <button class="button"
 onclick="completeLesson()">
+
 أنهيت الدرس ✅
+
 </button>
 
 </div>
@@ -716,7 +826,9 @@ print(name)
 
 <button class="button"
 onclick="completeLesson()">
+
 أنهيت الدرس ✅
+
 </button>
 
 </div>
@@ -738,38 +850,29 @@ onclick="completeLesson()">
 
 <div class="quiz">
 
-<h3>
-ما اللغة المستخدمة لبناء هيكل صفحة الويب؟
+<h3 id="questionText">
+جاري تحميل السؤال...
 </h3>
 
-<label>
-<input type="radio"
-name="q1"
-value="wrong">
-CSS
-</label>
-
-<label>
-<input type="radio"
-name="q1"
-value="correct">
-HTML
-</label>
-
-<label>
-<input type="radio"
-name="q1"
-value="wrong">
-Python
-</label>
+<div id="answers">
+</div>
 
 <button class="button"
-onclick="checkQuiz()">
+onclick="checkAnswer()">
+
 تحقق من الإجابة
+
 </button>
 
 <p id="quizResult"
 class="message">
+</p>
+
+<p>
+السؤال
+<span id="questionNumber">1</span>
+من
+<span id="totalQuestions">5</span>
 </p>
 
 </div>
@@ -796,7 +899,7 @@ class="message">
 </h3>
 
 <p>
-اكتب عنوانًا باستخدام h1.
+أنشئ عنوانًا باستخدام h1.
 </p>
 
 <pre>
@@ -805,11 +908,14 @@ class="message">
 
 <button class="button"
 onclick="completeChallenge()">
+
 أنهيت التحدي
+
 </button>
 
 <p id="challengeResult"
 class="message">
+
 </p>
 
 </div>
@@ -830,7 +936,7 @@ class="message">
 </h2>
 
 <p>
-اكتب الكود وشاهد النتيجة مباشرة.
+اكتب كود HTML وشاهد النتيجة مباشرة.
 </p>
 
 <div class="editor">
@@ -845,10 +951,13 @@ class="message">
 
 <button class="button"
 onclick="runCode()">
+
 ▶️ تشغيل الكود
+
 </button>
 
-<iframe id="output"></iframe>
+<iframe id="output">
+</iframe>
 
 </div>
 
@@ -870,7 +979,8 @@ onclick="runCode()">
 <div class="progress-box">
 
 <h3>
-تقدمك: <span id="progressText">0%</span>
+تقدمك:
+<span id="progressText">0%</span>
 </h3>
 
 <div class="progress">
@@ -882,7 +992,8 @@ class="progress-bar">
 </div>
 
 <p>
-النقاط: ⭐ <span id="points">0</span>
+⭐ النقاط:
+<span id="points">0</span>
 </p>
 
 </div>
@@ -916,7 +1027,9 @@ class="progress-bar">
 
 <p>✅ اختبارات إضافية</p>
 
-<p>✅ تحديات ومشاريع</p>
+<p>✅ تحديات برمجية</p>
+
+<p>✅ مشاريع عملية</p>
 
 <p>✅ شهادات إتمام</p>
 
@@ -924,11 +1037,14 @@ class="progress-bar">
 
 <button class="button"
 onclick="subscribe()">
+
 اشترك الآن
+
 </button>
 
 <p id="subscribeResult"
 class="message">
+
 </p>
 
 </div>
@@ -951,9 +1067,9 @@ class="message">
 <div class="about-box">
 
 <p>
-UDH منصة تعليمية تهدف إلى مساعدة
-المبتدئين على تعلم البرمجة بطريقة
-سهلة وممتعة.
+UDH منصة عربية تهدف إلى مساعدة
+المبتدئين على تعلم البرمجة
+بطريقة سهلة وممتعة.
 </p>
 
 <p>
@@ -973,17 +1089,17 @@ UDH منصة تعليمية تهدف إلى مساعدة
 © 2026 UDH - جميع الحقوق محفوظة
 </p>
 
+<p>
+تعلم 🚀 طبّق 💻 طوّر نفسك 🏆
+</p>
+
 </footer>
 
 
 <script>
 
-let points =
-parseInt(localStorage.getItem("udhPoints")) || 0;
 
-let progress =
-parseInt(localStorage.getItem("udhProgress")) || 0;
-
+/* التنقل بين الصفحات */
 
 function showPage(pageId) {
 
@@ -1008,16 +1124,39 @@ window.scrollTo(0,0);
 }
 
 
+/* النقاط والتقدم */
+
+let points =
+parseInt(
+localStorage.getItem("udhPoints")
+) || 0;
+
+let progress =
+parseInt(
+localStorage.getItem("udhProgress")
+) || 0;
+
+
 function updateProgress() {
 
+if(progress > 100) {
+
+progress = 100;
+
+}
+
 document.getElementById("points")
-.innerText = points;
+.innerText =
+points;
 
 document.getElementById("progressText")
-.innerText = progress + "%";
+.innerText =
+progress + "%";
 
 document.getElementById("progressBar")
-.style.width = progress + "%";
+.style.width =
+progress + "%";
+
 
 localStorage.setItem(
 "udhPoints",
@@ -1032,17 +1171,327 @@ progress
 }
 
 
+/* الدروس اليومية */
+
+const dailyLessons = [
+
+{
+title: "🌐 درس اليوم: مقدمة في HTML",
+
+text: "تعلم أن HTML هي اللغة الأساسية لبناء هيكل صفحات الويب.",
+
+code: "<h1>مرحبًا بك في UDH</h1>"
+},
+
+{
+title: "🌐 درس اليوم: العناوين في HTML",
+
+text: "يمكنك استخدام h1 و h2 و h3 لإنشاء عناوين مختلفة.",
+
+code: "<h1>العنوان الرئيسي</h1>\n<h2>عنوان فرعي</h2>"
+},
+
+{
+title: "🌐 درس اليوم: الفقرات",
+
+text: "استخدم الوسم p لكتابة النصوص والفقرات.",
+
+code: "<p>أنا أتعلم البرمجة في UDH</p>"
+},
+
+{
+title: "🎨 درس اليوم: مقدمة في CSS",
+
+text: "CSS تستخدم لتغيير شكل وتصميم صفحات الويب.",
+
+code: "body {\n  background: black;\n  color: white;\n}"
+},
+
+{
+title: "🎨 درس اليوم: الألوان",
+
+text: "يمكنك تغيير لون النص باستخدام خاصية color.",
+
+code: "h1 {\n  color: red;\n}"
+},
+
+{
+title: "🎨 درس اليوم: حجم الخط",
+
+text: "خاصية font-size تستخدم لتغيير حجم النص.",
+
+code: "p {\n  font-size: 20px;\n}"
+},
+
+{
+title: "⚡ درس اليوم: مقدمة في JavaScript",
+
+text: "JavaScript تجعل صفحات الويب تفاعلية.",
+
+code: "alert('مرحبًا بك في UDH');"
+},
+
+{
+title: "⚡ درس اليوم: المتغيرات",
+
+text: "المتغيرات تستخدم لتخزين البيانات.",
+
+code: "let name = 'UDH';"
+},
+
+{
+title: "⚡ درس اليوم: الأزرار",
+
+text: "يمكنك استخدام JavaScript لتنفيذ أوامر عند الضغط على الأزرار.",
+
+code: "button.onclick = function() {\n  alert('مرحبًا');\n};"
+},
+
+{
+title: "🐍 درس اليوم: مقدمة في Python",
+
+text: "Python لغة برمجة سهلة ومناسبة للمبتدئين.",
+
+code: "print('مرحبًا بك في UDH')"
+},
+
+{
+title: "🐍 درس اليوم: المتغيرات في Python",
+
+text: "يمكنك تخزين البيانات داخل المتغيرات.",
+
+code: "name = 'UDH'\nprint(name)"
+},
+
+{
+title: "🐍 درس اليوم: الأرقام",
+
+text: "يمكنك استخدام Python لإجراء العمليات الحسابية.",
+
+code: "x = 10\ny = 5\nprint(x + y)"
+},
+
+{
+title: "🌐 درس اليوم: الروابط",
+
+text: "يمكنك استخدام a لإنشاء رابط في HTML.",
+
+code: "<a href='https://example.com'>اضغط هنا</a>"
+},
+
+{
+title: "🌐 درس اليوم: الصور",
+
+text: "يمكنك استخدام img لإضافة صورة إلى الصفحة.",
+
+code: "<img src='image.jpg' alt='صورة'>"
+},
+
+{
+title: "🎨 درس اليوم: الخلفيات",
+
+text: "يمكنك تغيير خلفية العنصر باستخدام background.",
+
+code: "body {\n  background: black;\n}"
+},
+
+{
+title: "⚡ درس اليوم: رسالة للمستخدم",
+
+text: "يمكنك استخدام alert لعرض رسالة.",
+
+code: "alert('أهلًا بك في UDH');"
+},
+
+{
+title: "🐍 درس اليوم: الشرط",
+
+text: "تستخدم if لتنفيذ أمر عندما يتحقق شرط معين.",
+
+code: "age = 15\n\nif age >= 13:\n    print('مرحبًا')"
+},
+
+{
+title: "🌐 درس اليوم: القوائم",
+
+text: "يمكنك إنشاء قائمة باستخدام ul و li.",
+
+code: "<ul>\n<li>HTML</li>\n<li>CSS</li>\n</ul>"
+},
+
+{
+title: "🎨 درس اليوم: الحدود",
+
+text: "خاصية border تستخدم لإضافة حدود للعناصر.",
+
+code: "div {\n  border: 2px solid red;\n}"
+},
+
+{
+title: "🏆 درس اليوم: مشروع صغير",
+
+text: "حاول إنشاء صفحة تحتوي على عنوان وفقرة وزر.",
+
+code: "<h1>موقعي</h1>\n<p>أنا أتعلم البرمجة</p>\n<button>اضغط هنا</button>"
+}
+
+];
+
+
+function getDailyLesson() {
+
+let today =
+new Date();
+
+let start =
+new Date(
+today.getFullYear(),
+0,
+0
+);
+
+let difference =
+today - start;
+
+let oneDay =
+1000 * 60 * 60 * 24;
+
+let dayOfYear =
+Math.floor(
+difference / oneDay
+);
+
+let index =
+dayOfYear %
+dailyLessons.length;
+
+return dailyLessons[index];
+
+}
+
+
+function loadDailyLesson() {
+
+let lesson =
+getDailyLesson();
+
+
+document.getElementById(
+"dailyTitle"
+).innerText =
+lesson.title;
+
+
+document.getElementById(
+"dailyText"
+).innerText =
+lesson.text;
+
+
+document.getElementById(
+"dailyCode"
+).innerText =
+lesson.code;
+
+
+document.getElementById(
+"dailyTitle2"
+).innerText =
+lesson.title;
+
+
+document.getElementById(
+"dailyText2"
+).innerText =
+lesson.text;
+
+
+document.getElementById(
+"dailyCode2"
+).innerText =
+lesson.code;
+
+}
+
+
+function completeDailyLesson() {
+
+let today =
+new Date()
+.toISOString()
+.split("T")[0];
+
+
+let lastDay =
+localStorage.getItem(
+"udhLastDailyLesson"
+);
+
+
+if(lastDay === today) {
+
+document.getElementById(
+"dailyResult"
+).innerText =
+"✅ لقد أكملت درس اليوم بالفعل!";
+
+return;
+
+}
+
+
+points += 15;
+
+progress += 5;
+
+
+if(progress > 100) {
+
+progress = 100;
+
+}
+
+
+localStorage.setItem(
+"udhLastDailyLesson",
+today
+);
+
+
+updateProgress();
+
+
+document.getElementById(
+"dailyResult"
+).innerText =
+"🎉 أحسنت! حصلت على 15 نقطة ⭐";
+
+document.getElementById(
+"dailyResult2"
+).innerText =
+"🎉 أحسنت! حصلت على 15 نقطة ⭐";
+
+}
+
+
+/* إكمال الدرس */
+
 function completeLesson() {
 
 points += 10;
 
-if(progress < 100) {
-
 progress += 5;
+
+
+if(progress > 100) {
+
+progress = 100;
 
 }
 
+
 updateProgress();
+
 
 alert(
 "🎉 أحسنت! حصلت على 10 نقاط ⭐"
@@ -1051,35 +1500,194 @@ alert(
 }
 
 
-function checkQuiz() {
+/* أسئلة الاختبار */
 
-let answer =
-document.querySelector(
-'input[name="q1"]:checked'
-);
+const questions = [
 
-let result =
+{
+question:
+"ما اللغة المستخدمة لبناء هيكل صفحة الويب؟",
+
+answers:
+[
+"CSS",
+"HTML",
+"Python",
+"JavaScript"
+],
+
+correct: 1
+},
+
+{
+question:
+"ما اللغة المستخدمة لتنسيق وتصميم الموقع؟",
+
+answers:
+[
+"HTML",
+"Python",
+"CSS",
+"JavaScript"
+],
+
+correct: 2
+},
+
+{
+question:
+"ما اللغة التي تجعل الموقع تفاعليًا؟",
+
+answers:
+[
+"HTML",
+"CSS",
+"JavaScript",
+"Python"
+],
+
+correct: 2
+},
+
+{
+question:
+"ما اللغة المشهورة وسهلة للمبتدئين؟",
+
+answers:
+[
+"Python",
+"HTML",
+"CSS",
+"SQL"
+],
+
+correct: 0
+},
+
+{
+question:
+"أي وسم يستخدم لإنشاء عنوان رئيسي في HTML؟",
+
+answers:
+[
+"<p>",
+"<h1>",
+"<button>",
+"<div>"
+],
+
+correct: 1
+}
+
+];
+
+
+let currentQuestion = 0;
+
+let quizPoints = 0;
+
+
+function loadQuestion() {
+
+let question =
+questions[currentQuestion];
+
+
+document.getElementById(
+"questionText"
+).innerText =
+question.question;
+
+
+document.getElementById(
+"questionNumber"
+).innerText =
+currentQuestion + 1;
+
+
+document.getElementById(
+"totalQuestions"
+).innerText =
+questions.length;
+
+
+let html = "";
+
+
+question.answers.forEach(
+function(answer,index) {
+
+html += `
+
+<label>
+
+<input
+type="radio"
+name="quizAnswer"
+value="${index}"
+>
+
+${answer}
+
+</label>
+
+`;
+
+});
+
+
+document.getElementById(
+"answers"
+).innerHTML =
+html;
+
+
 document.getElementById(
 "quizResult"
+).innerText = "";
+
+}
+
+
+function checkAnswer() {
+
+let selected =
+document.querySelector(
+'input[name="quizAnswer"]:checked'
 );
 
-if(!answer) {
 
-result.innerText =
+if(!selected) {
+
+document.getElementById(
+"quizResult"
+).innerText =
 "⚠️ اختر إجابة أولًا";
-
-result.className =
-"message error";
 
 return;
 
 }
 
-if(answer.value === "correct") {
 
-points += 20;
+let answer =
+Number(
+selected.value
+);
+
+
+let correct =
+questions[currentQuestion]
+.correct;
+
+
+if(answer === correct) {
+
+quizPoints += 10;
+
+points += 10;
 
 progress += 5;
+
 
 if(progress > 100) {
 
@@ -1087,26 +1695,88 @@ progress = 100;
 
 }
 
-result.innerText =
-"🎉 إجابة صحيحة! حصلت على 20 نقطة ⭐";
-
-result.className =
-"message success";
 
 updateProgress();
 
+
+document.getElementById(
+"quizResult"
+).innerText =
+"🎉 إجابة صحيحة! +10 نقاط ⭐";
+
+
+setTimeout(
+nextQuestion,
+1000
+);
+
 } else {
 
-result.innerText =
+document.getElementById(
+"quizResult"
+).innerText =
 "❌ إجابة غير صحيحة، حاول مرة أخرى.";
 
-result.className =
-"message error";
+}
+
+}
+
+
+function nextQuestion() {
+
+currentQuestion++;
+
+
+if(
+currentQuestion <
+questions.length
+) {
+
+loadQuestion();
+
+} else {
+
+finishQuiz();
 
 }
 
 }
 
+
+function finishQuiz() {
+
+document.getElementById(
+"questionText"
+).innerText =
+"🏆 انتهى الاختبار!";
+
+
+document.getElementById(
+"answers"
+).innerHTML =
+"";
+
+
+document.getElementById(
+"quizResult"
+).innerHTML =
+
+"🎉 نتيجتك: " +
+quizPoints +
+" نقطة ⭐<br><br>" +
+
+"أحسنت! 🚀";
+
+
+document.querySelector(
+"#quiz .button"
+).style.display =
+"none";
+
+}
+
+
+/* التحدي */
 
 function completeChallenge() {
 
@@ -1114,26 +1784,26 @@ points += 30;
 
 progress += 10;
 
+
 if(progress > 100) {
 
 progress = 100;
 
 }
 
+
+updateProgress();
+
+
 document.getElementById(
 "challengeResult"
 ).innerText =
 "🏆 رائع! أكملت التحدي وحصلت على 30 نقطة ⭐";
 
-document.getElementById(
-"challengeResult"
-).className =
-"message success";
-
-updateProgress();
-
 }
 
+
+/* محرر الأكواد */
 
 function runCode() {
 
@@ -1141,6 +1811,7 @@ let code =
 document.getElementById(
 "code"
 ).value;
+
 
 document.getElementById(
 "output"
@@ -1150,34 +1821,47 @@ code;
 }
 
 
+/* الاشتراك */
+
 function subscribe() {
 
 document.getElementById(
 "subscribeResult"
 ).innerText =
-"⭐ نظام الاشتراك والدفع الإلكتروني سيتم تفعيله قريبًا.";
+
+"⭐ سيتم تفعيل الاشتراك والدفع الإلكتروني قريبًا.";
 
 }
 
+
+/* البحث */
 
 function searchLessons() {
 
 let search =
 document.getElementById(
 "search"
-).value.toLowerCase();
+).value
+.toLowerCase();
+
 
 let cards =
 document.querySelectorAll(
 ".lesson-card"
 );
 
-cards.forEach(function(card) {
+
+cards.forEach(
+function(card) {
 
 let text =
-card.innerText.toLowerCase();
+card.innerText
+.toLowerCase();
 
-if(text.includes(search)) {
+
+if(
+text.includes(search)
+) {
 
 card.style.display =
 "block";
@@ -1194,7 +1878,14 @@ card.style.display =
 }
 
 
+/* تشغيل الموقع */
+
+loadDailyLesson();
+
+loadQuestion();
+
 updateProgress();
+
 
 </script>
 
